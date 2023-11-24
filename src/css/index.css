@@ -1,0 +1,9 @@
+@import "./main.css";
+
+.small-bg-transition {
+    transition: background 250ms ease;
+}
+
+.funky-font {
+    font-family: "Dancing script", cursive;
+}
