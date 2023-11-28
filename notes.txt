@@ -1,0 +1,3 @@
+Tab management + amount in localstorage
+possibly update every frame to check if page changed.
+create function that returns a function for a variable to be updated like useState in react
