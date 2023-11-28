@@ -10,10 +10,15 @@
 
 #openTabs {
     border: 2px solid white;
-    padding: 0.125em 0.5em;
-    border-radius: 5px;
+    padding: 1px 5px;
+    font-size: 14px;
+    border-radius: 7px;
 }
 
 #url-bar {
     all: unset;
+}
+
+#three-icons {
+    gap: 2em;
 }
