@@ -1,15 +1,36 @@
 export default class TabManager {
     constructor() {
         this.previousTab = undefined;
-        this.currentTab = document.querySelector("div#body-inner-wrapper").getAttribute("current-page");
-        this.kanker = 0;
+        this.mainWrapper = document.querySelector("div#body-inner-wrapper");
+        this.browserView = document.querySelector("div#browser-view");
+        this.currentTab = {
+            name: this.mainWrapper.getAttribute("current-page"),
+            html: this.mainWrapper.innerHTML,
+        };
+    }
+
+    setDisplay() {
+        this.browserView.innerHTML = this.currentTab.html;
     }
 
     setLoading() {
-
+        this.previousTab = this.currentTab;
+        this.currentTab = {
+            name: "loading",
+            html: `
+                <h3>Loading...</h3>
+            `
+        }
+        
+        this.setDisplay(this.currentTab);
     }
 
     setNewTab(newHTML) {
+        this.previousTab = this.currentTab;
+        this.currentTab.html = newHTML.content;
+    }
+
+    displayManager() {
 
     }
 

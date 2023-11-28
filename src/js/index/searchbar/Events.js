@@ -1,7 +1,9 @@
 import TabManager from './TabManager.js';
 
 export default class SearchbarEventListener {
-    static { this.tabManager = new TabManager(); }
+    static { 
+        this.tabManager = new TabManager();
+    }
 
     async handleNewTab() {
         this.tabManager.setLoading();
@@ -9,15 +11,15 @@ export default class SearchbarEventListener {
         // document.querySelector("BrowserView").innerHTML = "kanker";
     }
     
-    async handleOpenTabMngr() {
+    static async handleOpenTabMngr() {
         this.tabManager.setLoading();
-        await fetch("/views/TabManagerView.html")
-        .then(r => this.tabManager.setNewTab(r))
+        await fetch("./views/TabManagerView.html")
+        .then(r => r.text()).then(r => this.tabManager.displayManager(r))
         .catch(e => this.tabManager.displayError(e));
     }
 
     static __init() {
-        this.newTabBtn = document.querySelector("CustomNavButton#newTab");
-        this.newTabBtn.addEventListener("click", async e => await handleNewTab());
+        this.tabManagerBtn = document.querySelector("CustomNavButton#tabManager");
+        this.tabManagerBtn.addEventListener("click", async e => await this.handleOpenTabMngr());
     }
 }
