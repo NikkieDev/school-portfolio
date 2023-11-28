@@ -1,7 +1,9 @@
 export default class DOMC {
     static setup() {
         const role = document.querySelector("span#role");
-        this.roleCycle(role);
+
+        
+        role !== null ? this.roleCycle(role) : null;
     }
 
     static roleCycle(elem) {
