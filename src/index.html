@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/index.css">
     <script src="./js/framework/index.js" type="module" defer></script>
-    <script src="./js/index/searchbar.js" type="module" defer></script>
+    <script src="./js/index/searchbar/index.js" type="module" defer></script>
     <title>Nikkie Schaad | Software Engineer & SysAdmin</title>
 </head>
 <body>
@@ -16,15 +16,21 @@
             <div class="d-flex flex-row bg-dark align-items-center gap-2 p-2" id="browser-nav">
                 <img src="./assets/house.svg" width="32" height="32">
                 <div class="d-flex text-white flex-grow-1 rounded-pill align-items-center p-2 flex-row gap-1 bg-dark-3">
-                    <img src="./assets/settings.svg" width="18" height="18">
+                    <CustomNavButton>
+                        <img src="./assets/settings.svg" width="18" height="18">
+                    </CustomNavButton>
                     <input class="mb-0" id="url-bar" value="kubyx.nl/about">
                 </div>
                 <div class="d-flex flex-row gap-3 text-white ms-auto">
-                    <img src="./assets/plus_white_480x480.png" width="24" height="24">
+                    <CustomNavButton>
+                        <img src="./assets/plus_white_480x480.png" width="24" height="24">
+                    </CustomNavButton>
                     <div id="tab-counter">
                         <span id="openTabs">1</span>
                     </div>
-                    <img src="./assets/three-dots_24x24_white.png" width="24" height="24">
+                    <CustomNavButton>
+                        <img src="./assets/three-dots_24x24_white.png" width="24" height="24">
+                    </CustomNavButton>
                 </div>
             </div>
         </div>
