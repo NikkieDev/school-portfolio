@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
 
 .bg-dark-2 { background-color: #475569; }
+.bg-dark-3 { background-color: #424347; }
 .glass-purple {
     background: linear-gradient(30deg, hsla(0, 0%, 40%, 0.55), purple);
     backdrop-filter: blur(30px);

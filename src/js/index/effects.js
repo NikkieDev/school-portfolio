@@ -7,8 +7,8 @@ export default class Effects {
     static init() {
         const navLinkImages = document.querySelectorAll("img.nav-link__before-image");
         const available = [
-            "../../assets/square_24x24_black.png",
-            "../../assets/square_32x32_white.png"
+            "./assets/square_24x24_black.png",
+            "./assets/square_32x32_white.png"
         ]
 
         navLinkImages.forEach(elem => {
