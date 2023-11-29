@@ -12,7 +12,6 @@ export default class SearchbarEventListener {
     }
     
     static async handleOpenTabMngr() {
-        this.tabManager.setLoading();
         await fetch("./views/TabManagerView.html")
         .then(r => r.text()).then(r => this.tabManager.displayManager(r))
         .catch(e => this.tabManager.displayError(e));

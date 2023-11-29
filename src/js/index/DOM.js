@@ -18,4 +18,8 @@ export default class DOMC {
             localStorage.setItem("role", roles[CHOSEN]);
         }, 3000);
     }
+
+    static enableFullscreen() {
+        document.querySelector("div#body-inner-wrapper").requestFullscreen();
+    }
 }

@@ -13,10 +13,6 @@ export default class CustomElements {
         ]); this.elements.push([
             document.querySelectorAll("CustomNavButton"),
             [this.addHoverListener]
-        ]); this.elements.push([
-            document.querySelectorAll("span#openTabs"), []
-            // [(e) => { e.addEventListener("mouseenter", () => e.style.cursor = "not-allowed");
-            // e.addEventListener("mouseleave", () => e.style.cursor = "default") }]
         ]);
 
         this.define();

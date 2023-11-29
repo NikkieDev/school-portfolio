@@ -1,3 +1,5 @@
+import framework from '../../framework/elements.js';
+
 export default class TabManager {
     constructor() {
         this.previousTab = undefined;
@@ -28,10 +30,13 @@ export default class TabManager {
     setNewTab(newHTML) {
         this.previousTab = this.currentTab;
         this.currentTab.html = newHTML.content;
+        this.browserView = this.currentTab.html;
     }
 
-    displayManager() {
-
+    displayManager(r) {
+        this.previousTab = this.currentTab;
+        this.mainWrapper.innerHTML = r
+        framework.RegisterAll();
     }
 
     displayError(error) { // mockup code
