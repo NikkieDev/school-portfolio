@@ -6,6 +6,17 @@ export default class CustomElements {
         element.addEventListener("mouseleave", e => element.style.cursor = "auto");
     }
 
+    static handleSettings(element) {
+        element.addEventListener("click", e => {
+            if (element.getAttribute("opened") == "false") {
+                element.setAttribute("opened", "true");
+                document.createElement("div"); // create popup
+            } else {
+                element.setAttribute("opened", "false");
+            }
+        });
+    }
+
     static RegisterAll() {
         this.elements.push([
             document.querySelectorAll("NavLinkItem"),
@@ -13,7 +24,10 @@ export default class CustomElements {
         ]); this.elements.push([
             document.querySelectorAll("CustomNavButton"),
             [this.addHoverListener]
-        ]);
+        ]); this.elements.push([
+            document.querySelectorAll("CustomNavButton#settings"),
+            [this.handleSettings]
+        ])
 
         this.define();
     }
