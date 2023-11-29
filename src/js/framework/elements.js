@@ -27,7 +27,7 @@ export default class CustomElements {
     }
 
     static RegisterAll() {
-        this.elements.push({ _elements: document.querySelectorAll("CustomNavButton"), functions: [this.addHoverListener], styles: [], classes: [] });
+        this.elements.push({ _elements: document.querySelectorAll("CustomNavButton"), functions: [this.addHoverListener] });
         this.elements.push({ _elements: document.querySelectorAll("SettingsButton"), functions: [this.handleSettings] });
 
         this.define(this.elements);
