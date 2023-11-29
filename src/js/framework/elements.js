@@ -7,39 +7,39 @@ export default class CustomElements {
     }
 
     static handleSettings(element) {
+        // const popup = document.createElement("div"); // create popup
+        // popup.innerHTML = `
+        //     <div class="d-flex flex-column">
+        //         <SettingsButton>Kanker</SettingsButton>
+        //     </div
+        // `;
+        // document.body.appendChild(popup);
+
         element.addEventListener("click", e => {
             if (element.getAttribute("opened") == "false") {
                 element.setAttribute("opened", "true");
-                document.createElement("div"); // create popup
             } else {
                 element.setAttribute("opened", "false");
             }
+
+            console.log(element.getAttribute("opened"));
         });
     }
 
     static RegisterAll() {
-        this.elements.push([
-            document.querySelectorAll("NavLinkItem"),
-            ["p-2", "rounded"]
-        ]); this.elements.push([
-            document.querySelectorAll("CustomNavButton"),
-            [this.addHoverListener]
-        ]); this.elements.push([
-            document.querySelectorAll("CustomNavButton#settings"),
-            [this.handleSettings]
-        ])
+        this.elements.push({ _elements: document.querySelectorAll("CustomNavButton"), functions: [this.addHoverListener], styles: [], classes: [] });
+        this.elements.push({ _elements: document.querySelectorAll("SettingsButton"), functions: [this.handleSettings] });
 
-        this.define();
+        this.define(this.elements);
     }
 
-    static define() {
-        this.elements.forEach(customElement => {
-            customElement[0].forEach(elem => {
-                customElement[1].forEach(elemAttr => {
-                    if (typeof elemAttr == "string") elem.classList.add(elemAttr);
-                    else if (typeof elemAttr == "function") elemAttr(elem);
-                })
+    static define(arrayOfElements) {
+        arrayOfElements.forEach(arrIndex => {
+            arrIndex._elements.forEach(arrElement => {
+                arrIndex.functions.forEach(arrFunc => arrFunc(arrElement));
+                arrIndex.styles.forEach(arrStyle => arrElement.style.cssText += ` ${arrStyle} `);
+                arrIndex.classes.forEach(arrClass => arrElement.classList.add(arrClass))
             })
-        });
+        })
     }
 }
