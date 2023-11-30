@@ -1,5 +1,10 @@
+import SearchbarEventListener from "../index/searchbar/Events.js";
+
 export default class CustomElements {
-    static { this.elements = []; }
+    static {
+        this.elements = []; 
+        this.sBar = new SearchbarEventListener();
+    }
 
     static addHoverListener(element) {
         element.addEventListener("mouseenter", e => element.style.cursor = "pointer");
@@ -29,6 +34,9 @@ export default class CustomElements {
     static RegisterAll() {
         this.elements.push({ _elements: document.querySelectorAll("CustomNavButton"), functions: [this.addHoverListener] });
         this.elements.push({ _elements: document.querySelectorAll("SettingsButton"), functions: [this.handleSettings] });
+        this.elements.push({ _elements: document.querySelectorAll("Tab"), functions: [this.addHoverListener, this.sBar.handleNewTab, () => {
+            console.log
+        }], classes: ["rounded-4", "m-1", "tab-border", "tab"], styles: ["height: 240px;"]})
 
         this.define(this.elements);
     }
@@ -36,9 +44,9 @@ export default class CustomElements {
     static define(arrayOfElements) {
         arrayOfElements.forEach(arrIndex => {
             arrIndex._elements.forEach(arrElement => {
-                arrIndex.functions.forEach(arrFunc => arrFunc(arrElement));
-                arrIndex.styles.forEach(arrStyle => arrElement.style.cssText += ` ${arrStyle} `);
-                arrIndex.classes.forEach(arrClass => arrElement.classList.add(arrClass))
+                arrIndex.functions ? arrIndex.functions.forEach(arrFunc => arrFunc(arrElement)) : null;
+                arrIndex.styles ? arrIndex.styles.forEach(arrStyle => arrElement.style.cssText += ` ${arrStyle} `) : null;
+                arrIndex.classes ? arrIndex.classes.forEach(arrClass => arrElement.classList.add(arrClass)) : null;
             })
         })
     }

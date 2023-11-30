@@ -6,8 +6,9 @@ export default class SearchbarEventListener {
     }
 
     async handleNewTab() {
-        this.tabManager.setLoading();
-        await fetch("/views/AboutView.html");
+        const tabManager = new TabManager();
+        tabManager.setLoading();
+        
         // document.querySelector("BrowserView").innerHTML = "kanker";
     }
     
