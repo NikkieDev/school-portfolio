@@ -1,4 +1,7 @@
-<div class="d-flex flex-column bg-dark">
+<head>
+    <link rel="stylesheet" href="./css/TabManager.css">
+</head>
+<div class="container d-flex flex-column bg-dark">
     <div id="manager-nav" class="d-flex flex-row align-items-center">
         <CustomNavButton class="d-flex gap-2 p-3 rounded-pill flex-row align-items-center text-white" id="newTab">
             <img src="./assets/plus_white_480x480.png" width="24" height="24">
@@ -7,5 +10,55 @@
         <CustomNavButton class="text-white ms-auto p-3" opened="false" id="settings">
             <img src="./assets/three-dots_24x24_white.png" width="24" height="24">
         </CustomNavButton>
+    </div>
+    <div class="container text-white">
+        <div class="row my-2">
+            <div class="col-6">
+                <div class="rounded-4 m-1 tab-border" style="height: 240px;">
+                    <div class="d-flex bg-dark-3 rounded-top-3 flex-row align-items-center p-1">
+                        <div class="d-flex flex-row gap-2">
+                            <img src="./assets/ndev.jpeg" height="24" width="24">
+                            <h3 class="mb-0 fs-4 d-flex align-items-center">Home</h3>
+                        </div>
+                        <span class="ms-auto">X</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="rounded-4 m-1 tab-border" style="height: 240px;">
+                    <div class="d-flex bg-dark-3 rounded-top-3 flex-row align-items-center p-1">
+                        <div class="d-flex flex-row gap-2">
+                            <img src="./assets/ndev.jpeg" height="24" width="24">
+                            <h3 class="mb-0 fs-4 d-flex align-items-center">About</h3>
+                        </div>
+                        <span class="ms-auto">X</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-6">
+                <div class="rounded-4 m-1 tab-border" style="height: 240px;">
+                    <div class="d-flex bg-dark-3 rounded-top-3 flex-row align-items-center p-1">
+                        <div class="d-flex flex-row gap-2">
+                            <img src="./assets/ndev.jpeg" height="24" width="24">
+                            <h3 class="mb-0 fs-4 d-flex align-items-center">Projects</h3>
+                        </div>
+                        <span class="ms-auto">X</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="rounded-4 m-1 tab-border" style="height: 240px;">
+                    <div class="d-flex bg-dark-3 rounded-top-3 flex-row align-items-center p-1">
+                        <div class="d-flex flex-row gap-2">
+                            <img src="./assets/ndev.jpeg" height="24" width="24">
+                            <h3 class="mb-0 fs-4 d-flex align-items-center">Contact</h3>
+                        </div>
+                        <span class="ms-auto">X</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

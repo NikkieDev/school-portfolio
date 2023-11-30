@@ -2,10 +2,20 @@
 
 .bg-dark-2 { background-color: #475569; }
 .bg-dark-3 { background-color: #424347; }
+.bg-gray { background-color: gray; }
 .glass-purple {
     background: linear-gradient(30deg, hsla(0, 0%, 40%, 0.55), purple);
     backdrop-filter: blur(30px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     -webkit-backdrop-filter: blur(30px);
+}
+
+#body-inner-wrapper {
+    max-width: 445px;
+    height: 100%;
+}
+
+html, body {
+    height: 100%;
 }
