@@ -9,6 +9,8 @@ export default class TabManager {
             name: this.mainWrapper.getAttribute("current-page"),
             html: this.mainWrapper.innerHTML,
         };
+
+        localStorage.setItem("current-page", this.currentTab.name);
     }
 
     setDisplay() {
@@ -36,6 +38,19 @@ export default class TabManager {
     displayManager(r) {
         this.previousTab = this.currentTab;
         this.mainWrapper.innerHTML = r
+
+        const styling = document.createElement("link");
+        const scripting = document.createElement('script');
+        
+        styling.href = "./css/TabManager.css";
+        styling.rel = "stylesheet";
+
+        scripting.src = "./js/TabManager/index.js";
+        scripting.type = "module";
+        scripting.defer = "defer";
+
+        document.getElementsByTagName("head")[0].appendChild(styling);
+        document.getElementsByTagName("head")[0].appendChild(scripting);
         framework.RegisterAll();
     }
 
