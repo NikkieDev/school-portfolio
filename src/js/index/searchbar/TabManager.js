@@ -27,7 +27,8 @@ export default class TabManager {
 
     displayHTML(r, meta_data) {
         this.previousTab = this.currentTab;
-        this.mainWrapper.innerHTML = r
+        meta_data["name"] == "TabManager" ? this.mainWrapper.innerHTML = r
+            : this.browserView.innerHTML = r;
 
         const styling = document.createElement("link");
         const scripting = document.createElement('script');
@@ -42,6 +43,11 @@ export default class TabManager {
         document.getElementsByTagName("head")[0].appendChild(styling);
         document.getElementsByTagName("head")[0].appendChild(scripting);
         framework.RegisterAll();
+    }
+
+    displayLayout() {
+        this.mainWrapper.innerHTML = this.previousTab.html; 
+        this.previousTab = this.currentTab;
     }
 
     displayError(error) { // mockup code

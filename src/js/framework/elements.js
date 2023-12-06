@@ -37,6 +37,7 @@ export default class CustomElements {
         this.elements.push({ _elements: document.querySelectorAll("Tab"), functions: [this.addHoverListener], classes: ["rounded-4", "m-1", "tab-border", "tab", "d-flex", "flex-column"], styles: ["height: 240px;"], onclick: [this.sBar.handleNewTab]})
 
         this.define(this.elements);
+        this.elements = [];
     }
 
     static define(arrayOfElements) {

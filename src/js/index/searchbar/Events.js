@@ -3,9 +3,11 @@ import TabManager from './TabManager.js';
 export default class SearchbarEventListener {
     static { 
         this.tabManager = new TabManager();
+        this.elem = {activator: null, new_html: null, old_html: null};
     }
 
     static async loadNewHTML(pageName) {
+        this.tabManager.displayLayout();
         await fetch(`./views/${pageName}View.html`).then(r => r.text())
         .then(r => {
             const META = {
@@ -24,7 +26,6 @@ export default class SearchbarEventListener {
         // elem = text.srcElement.nodeName == "H3" ? text.srcElement.parentNode.parentNode
         //     : text.srcElement.nodeName == "TAB" ? text.srcElement.children[0]
         //     : text.srcElement;
-
         if (text.srcElement.nodeName == "H3") {
             elem["activator"] = text.srcElement.parentNode.parentNode
             elem["new_html"] =  text.srcElement.innerText;
@@ -36,7 +37,7 @@ export default class SearchbarEventListener {
             elem["new_html"] = text.srcElement.children[0].children[1].innerText;
         }
         console.log(elem["new_html"]);
-        SearchbarEventListener.loadNewHTML(elem["new_html"]);
+        SearchbarEventListener.loadNewHTML(elem);
     }
     
     static async handleOpenTabMngr() {
