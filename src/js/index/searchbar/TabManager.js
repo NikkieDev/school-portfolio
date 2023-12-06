@@ -4,17 +4,13 @@ export default class TabManager {
     constructor() {
         this.previousTab = undefined;
         this.mainWrapper = document.querySelector("div#body-inner-wrapper");
-        this.browserView = document.querySelector("div#browser-view");
+        this.browserView = document.querySelector("BrowserView");
         this.currentTab = {
             name: this.mainWrapper.getAttribute("current-page"),
             html: this.mainWrapper.innerHTML,
         };
 
         localStorage.setItem("current-page", this.currentTab.name);
-    }
-
-    setDisplay() {
-        this.browserView.innerHTML = this.currentTab.html;
     }
 
     setLoading() {
@@ -26,26 +22,20 @@ export default class TabManager {
             `
         }
         
-        this.setDisplay(this.currentTab);
+        this.browserView.innerHTML = this.currentTab.html;        
     }
 
-    setNewTab(newHTML) {
-        this.previousTab = this.currentTab;
-        this.currentTab.html = newHTML.content;
-        this.browserView = this.currentTab.html;
-    }
-
-    displayManager(r) {
+    displayHTML(r, meta_data) {
         this.previousTab = this.currentTab;
         this.mainWrapper.innerHTML = r
 
         const styling = document.createElement("link");
         const scripting = document.createElement('script');
         
-        styling.href = "./css/TabManager.css";
+        styling.href = `./css/${meta_data["name"]}.css`;
         styling.rel = "stylesheet";
 
-        scripting.src = "./js/TabManager/index.js";
+        scripting.src = `./js/${meta_data["name"]}/index.js`;
         scripting.type = "module";
         scripting.defer = "defer";
 
@@ -55,6 +45,7 @@ export default class TabManager {
     }
 
     displayError(error) { // mockup code
+        // would have
         const newHTML = `
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <img src="/error_96x96.png">

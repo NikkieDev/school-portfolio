@@ -34,9 +34,7 @@ export default class CustomElements {
     static RegisterAll() {
         this.elements.push({ _elements: document.querySelectorAll("CustomNavButton"), functions: [this.addHoverListener] });
         this.elements.push({ _elements: document.querySelectorAll("SettingsButton"), functions: [this.handleSettings] });
-        this.elements.push({ _elements: document.querySelectorAll("Tab"), functions: [this.addHoverListener, this.sBar.handleNewTab, () => {
-            console.log
-        }], classes: ["rounded-4", "m-1", "tab-border", "tab"], styles: ["height: 240px;"]})
+        this.elements.push({ _elements: document.querySelectorAll("Tab"), functions: [this.addHoverListener], classes: ["rounded-4", "m-1", "tab-border", "tab", "d-flex", "flex-column"], styles: ["height: 240px;"], onclick: [this.sBar.handleNewTab]})
 
         this.define(this.elements);
     }
@@ -47,6 +45,7 @@ export default class CustomElements {
                 arrIndex.functions ? arrIndex.functions.forEach(arrFunc => arrFunc(arrElement)) : null;
                 arrIndex.styles ? arrIndex.styles.forEach(arrStyle => arrElement.style.cssText += ` ${arrStyle} `) : null;
                 arrIndex.classes ? arrIndex.classes.forEach(arrClass => arrElement.classList.add(arrClass)) : null;
+                arrIndex.onclick ? arrIndex.onclick.forEach(arrClick => arrElement.addEventListener('click', e => arrClick(e))) : null;
             })
         })
     }
