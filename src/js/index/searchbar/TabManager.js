@@ -4,7 +4,6 @@ export default class TabManager {
     constructor() {
         this.previousTab = undefined;
         this.mainWrapper = document.querySelector("div#body-inner-wrapper");
-        this.browserView = document.querySelector("BrowserView");
         this.currentTab = {
             name: this.mainWrapper.getAttribute("current-page"),
             html: this.mainWrapper.innerHTML,
@@ -14,6 +13,7 @@ export default class TabManager {
     }
 
     setLoading() {
+        this.browserView = document.querySelector("browserview");
         this.previousTab = this.currentTab;
         this.currentTab = {
             name: "loading",
@@ -25,15 +25,27 @@ export default class TabManager {
         this.browserView.innerHTML = this.currentTab.html;        
     }
 
-    displayHTML(r, meta_data) {
+    setPage(r, data) {
         this.previousTab = this.currentTab;
+        this.currentTab = { name: data["name"], html: r, scripts: data["scripts"], css: data["css"] };
+        this.mainWrapper.setAttribute("current-page", this.currentTab.name);
+    }
 
-        meta_data == "TabManager" ? this.mainWrapper.innerHTML = r
-            : this.browserView.innerHTML = r;
+    displayHTML(r, meta_data) {
+        const data = {
+            name: meta_data
+        }
+        this.browserView = document.querySelector("browserview");
+
+        if (meta_data == "TabManager") {
+            this.mainWrapper.innerHTML = r;
+        } else {
+            this.browserView.innerHTML = r;
+        }
 
         const styling = document.createElement("link");
         const scripting = document.createElement('script');
-        
+
         console.log(meta_data);
         styling.href = `./css/${meta_data}.css`;
         styling.rel = "stylesheet";
@@ -41,6 +53,10 @@ export default class TabManager {
         scripting.src = `./js/${meta_data}/index.js`;
         scripting.type = "module";
         scripting.defer = "defer";
+
+        data.script = scripting;
+        data.css = styling;
+        this.setPage(r, data);
 
         document.getElementsByTagName("head")[0].appendChild(styling);
         document.getElementsByTagName("head")[0].appendChild(scripting);

@@ -10,6 +10,7 @@ export default class SearchbarEventListener {
         this.tabManager.displayLayout();
         await fetch(`./views/${pageName}View.html`).then(r => r.text())
         .then(r => {
+            console.log(r);
             this.tabManager.displayHTML(r, pageName);
         })
     }
