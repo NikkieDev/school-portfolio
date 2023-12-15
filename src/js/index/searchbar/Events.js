@@ -10,11 +10,7 @@ export default class SearchbarEventListener {
         this.tabManager.displayLayout();
         await fetch(`./views/${pageName}View.html`).then(r => r.text())
         .then(r => {
-            const META = {
-                name: pageName
-            }
-            
-            this.tabManager.displayHTML(r, META)
+            this.tabManager.displayHTML(r, pageName);
         })
     }
 
@@ -23,9 +19,6 @@ export default class SearchbarEventListener {
         tabManager.setLoading();
         let elem = {};
 
-        // elem = text.srcElement.nodeName == "H3" ? text.srcElement.parentNode.parentNode
-        //     : text.srcElement.nodeName == "TAB" ? text.srcElement.children[0]
-        //     : text.srcElement;
         if (text.srcElement.nodeName == "H3") {
             elem["activator"] = text.srcElement.parentNode.parentNode
             elem["new_html"] =  text.srcElement.innerText;
@@ -37,7 +30,7 @@ export default class SearchbarEventListener {
             elem["new_html"] = text.srcElement.children[0].children[1].innerText;
         }
         console.log(elem["new_html"]);
-        SearchbarEventListener.loadNewHTML(elem);
+        SearchbarEventListener.loadNewHTML(elem["new_html"]);
     }
     
     static async handleOpenTabMngr() {
@@ -47,7 +40,7 @@ export default class SearchbarEventListener {
                 name: "TabManager"
             };
 
-            this.tabManager.displayHTML(r, META);
+            this.tabManager.displayHTML(r, META.name);
         })
         .catch(e => tabManager.displayError(e));
     }

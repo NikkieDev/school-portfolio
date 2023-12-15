@@ -27,16 +27,18 @@ export default class TabManager {
 
     displayHTML(r, meta_data) {
         this.previousTab = this.currentTab;
-        meta_data["name"] == "TabManager" ? this.mainWrapper.innerHTML = r
+
+        meta_data == "TabManager" ? this.mainWrapper.innerHTML = r
             : this.browserView.innerHTML = r;
 
         const styling = document.createElement("link");
         const scripting = document.createElement('script');
         
-        styling.href = `./css/${meta_data["name"]}.css`;
+        console.log(meta_data);
+        styling.href = `./css/${meta_data}.css`;
         styling.rel = "stylesheet";
 
-        scripting.src = `./js/${meta_data["name"]}/index.js`;
+        scripting.src = `./js/${meta_data}/index.js`;
         scripting.type = "module";
         scripting.defer = "defer";
 
